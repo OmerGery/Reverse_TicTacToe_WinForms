@@ -9,6 +9,9 @@ namespace Ex02_UI
         public static bool m_QSelected;
         private int m_UsersChoiceOfGameMode;
         private int m_UserSelectedBoardSize;
+
+        public const string k_QuitSymbolOne = "Q";
+        public const string k_QuitSymbolTwo = "q";
         public static void CheckForUserWithdraw()
         {
             if (m_QSelected)
@@ -33,13 +36,43 @@ namespace Ex02_UI
             }
         }
 
+        public Board.Square GetHumanMoveDetailsFromUser()
+        {
+            Board.Square selectedSquare  = new Board.Square();
+            bool isSquareTaken = false;            do
+            {
+                OutputManager.PrintInvalidSquareError();
+                InputManager.GetSquareFromPlayer(m_UserSelectedBoardSize, ref selectedSquare);
+                if(!m_QSelected)
+                {
+                    isSquareTaken = m_Game.GameBoard.CheckIfSquareTaken(selectedSquare);
+                }
+            }
+            while(isSquareTaken && !m_QSelected) ;
+            return selectedSquare;
+        }
         public void PlayGame()
         {
             while (m_Game.IsGameActive)
-            { 
-                m_Game.PlayTurn();
-                if(m_Game.CheckWin())
+            {
+                OutputManager.DrawBoard(m_Game.GameBoard);
+                if(m_Game.isHumanTurn())
                 {
+                    Board.Square userSelectedSquare = GetHumanMoveDetailsFromUser();
+                    if(m_QSelected)
+                    {
+                        OutputManager.PrintGameOver();
+                        break;
+                    }
+                    m_Game.PlayHumanTurn(userSelectedSquare);
+                }
+                else
+                {
+                    m_Game.PlayComputerTurn();
+                }
+                if(m_Game.CheckWinOrTie())
+                {
+                    OutputManager.DrawBoard(m_Game.GameBoard);
                     m_Game.UpdateEndRoundResult();
                     OutputManager.PrintGameResult(m_Game.IsTieGame, m_Game.PlayerOneWon);
                     StartOverMenu();

@@ -17,7 +17,7 @@ namespace Ex02_UI
             while (!isValid)
             {
                 string userInput = GetDataFromUser();
-                if (userInput == GameManager.k_QuitSymbolOne || userInput == GameManager.k_QuitSymbolTwo)
+                if (userInput == UI.k_QuitSymbolOne || userInput == UI.k_QuitSymbolTwo)
                 {
                     UI.m_QSelected = true;
                     isValid = true;
