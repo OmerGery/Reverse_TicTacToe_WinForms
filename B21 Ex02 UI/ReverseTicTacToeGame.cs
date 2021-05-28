@@ -10,6 +10,8 @@ namespace Ex02_UI
 {
     public class ReverseTicTacToeGame : Form
     {
+        private GameManager m_Game;
+
         Button m_ButtonStart;
         Button m_ButtonBoardSize;
         bool m_IsLoggedIn = false;
@@ -22,10 +24,12 @@ namespace Ex02_UI
 
         public ReverseTicTacToeGame()
         {
+            m_Game = new GameManager();
+
             this.Text = "Reverse Tic Tac Toe - Settings";
             this.BackColor = Color.Gray;
             this.FormBorderStyle = FormBorderStyle.Fixed3D;
-            this.Size = new Size(500, 500);
+            this.Size = new Size(300, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
 
             m_LabelPlayerOne.Text = "First Player Name:";
@@ -54,18 +58,26 @@ namespace Ex02_UI
 
             m_ButtonBoardSize = new Button();
             m_ButtonBoardSize.Location = new Point(20, 120);
-            m_ButtonBoardSize.Size = new Size(new Point(50, 50));
+            m_ButtonBoardSize.Size = new Size(50, 50);
             m_ButtonBoardSize.Text = min.ToString();
             this.Controls.Add(m_ButtonBoardSize);
             m_ButtonBoardSize.Click += new EventHandler(button_Click2); 
 
-            //m_ButtonStart.Click += new EventHandler(button_Click);
 
-            //m_ButtonStart = new Button();
-            //m_ButtonStart.Text = "Start";
-            //this.Controls.Add(m_ButtonStart);
+            m_ButtonStart = new Button();
+            m_ButtonStart.Text = "Start";
+            m_ButtonStart.BackColor = Color.Green;
+            m_ButtonStart.Location = new Point(200, 140);
+            this.Controls.Add(m_ButtonStart);
+            m_ButtonStart.Click += new EventHandler(buttonStart_Click);
 
             //m_ButtonStart.Click += new EventHandler(button_Click);
+        }
+
+        private void buttonStart_Click(object i_Sender, EventArgs i_E)
+        {
+
+            m_Game.InitGame(int.Parse(m_ButtonBoardSize.Text), 1);
         }
 
         private void button_Click2(object sender, EventArgs e)
