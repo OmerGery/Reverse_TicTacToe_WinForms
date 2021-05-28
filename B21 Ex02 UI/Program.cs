@@ -1,13 +1,16 @@
-﻿using Ex02_Logic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows.Forms;
+using System.Drawing;
 
-namespace Ex02_UI
+namespace FirstWinApp
 {
     public class Program
     {
         public static void Main()
         {
-            UI game = new UI();
-            game.RunGame();
+            Application.Run(new ReverseTicTacToeGame());
         }
     }
 }
