@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace FirstWinApp
+namespace Ex02_UI
 {
     public class Program
     {

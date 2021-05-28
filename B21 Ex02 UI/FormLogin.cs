@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Ex02_Logic;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace FirstWinApp
+namespace Ex02_UI
 {
     public class FormLogin : Form
     {
