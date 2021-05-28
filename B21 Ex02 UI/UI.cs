@@ -39,7 +39,8 @@ namespace Ex02_UI
         public Board.Square GetHumanMoveDetailsFromUser()
         {
             Board.Square selectedSquare  = new Board.Square();
-            bool isSquareTaken = false;            do
+            bool isSquareTaken = false;     
+            do
             {
                 OutputManager.PrintInvalidSquareError();
                 InputManager.GetSquareFromPlayer(m_UserSelectedBoardSize, ref selectedSquare);
