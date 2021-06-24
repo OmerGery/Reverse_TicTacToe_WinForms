@@ -44,6 +44,29 @@ namespace __B21_Ex02_UI
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            if(textBox2.Enabled)
+            {
+                textBox2.Text = "[Computer]";
+            }
+            else
+            {
+                textBox2.Text = "";
+            }
+            textBox2.Enabled = !(textBox2.Enabled);
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
