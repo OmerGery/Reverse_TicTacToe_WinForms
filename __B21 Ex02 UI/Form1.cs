@@ -69,5 +69,15 @@ namespace __B21_Ex02_UI
         {
 
         }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            numericUpDown3.Value = numericUpDown2.Value;
+        }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            numericUpDown2.Value = numericUpDown3.Value;
+        }
     }
 }
