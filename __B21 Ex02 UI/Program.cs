@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Ex02_UI;
 
 namespace __B21_Ex02_UI
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GameStarterButton());
+            UI gameUi = new UI();
+            gameUi.RunGame();
+
         }
     }
 }

@@ -38,16 +38,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ReverseTicTacToeGame.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="InputManager.cs" />
     <Compile Include="OutputManager.cs" />
     <Compile Include="UI.cs" />
-    <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\B21_Ex02_01\Ex02_Logic.csproj">

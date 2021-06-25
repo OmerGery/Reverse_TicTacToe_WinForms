@@ -1,19 +1,27 @@
-﻿using Ex02_Logic;
-using __B21 Ex02 UI;
+﻿using __B21_Ex02_UI;
+using Ex02_Logic;
 
 namespace Ex02_UI
 {
     public class UI
     {
-        pr
+        
         private GameManager m_Game;
 
         public static bool m_QSelected;
         private int m_UsersChoiceOfGameMode;
         private int m_UserSelectedBoardSize;
+        private GameForm m_GameForm;
+        private GameSettingsForm m_SettingsForm;
 
         public const string k_QuitSymbolOne = "Q";
         public const string k_QuitSymbolTwo = "q";
+
+        public UI()
+        {
+            m_SettingsForm = new GameSettingsForm();
+
+        }
         public static void CheckForUserWithdraw()
         {
             if (m_QSelected)
@@ -84,15 +92,25 @@ namespace Ex02_UI
         }
         public void RunGame()
         {
+            m_SettingsForm.ShowDialog();
+            BuildGameFromSettings();
+            m_GameForm.ShowDialog();
             m_Game = new GameManager();
-            OutputManager.PrintRequestForBoardSize();
-            m_UserSelectedBoardSize = InputManager.GetValidNumFromUser(GameManager.k_MinBoardSize, GameManager.k_MaxBoardSize);
-            CheckForUserWithdraw();
-            OutputManager.PrintRequestForGameMode();
-            m_UsersChoiceOfGameMode = InputManager.GetValidNumFromUser((int)GameManager.eGameModes.GameModeOptionOne, (int)GameManager.eGameModes.GameModeOptionTwo);
+            //    m_UserSelectedBoardSize = InputManager.GetValidNumFromUser(GameManager.k_MinBoardSize, GameManager.k_MaxBoardSize);
+            //   m_UsersChoiceOfGameMode = InputManager.GetUsersChoiceOfGameMode();
             CheckForUserWithdraw();
             m_Game.InitGame(m_UserSelectedBoardSize, m_UsersChoiceOfGameMode);
             PlayGame();
+        }
+
+        private void BuildGameFromSettings()
+        {
+            m_GameForm = new GameForm();
+            //char buttonsArray = m_Game.GameBoard.BoardMatrix;
+            int amountOfRows = m_SettingsForm.RowsUpDown;
+            m_GameForm.Height = m_GameForm.Width = amountOfRows * 75;
+            m_GameForm.Player1Label =  m_SettingsForm.Player1TextBox + ":";
+            m_GameForm.Player2Label = m_SettingsForm.Player2TextBox + ":";
         }
     }
 }
