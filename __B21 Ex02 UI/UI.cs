@@ -99,13 +99,15 @@ namespace Ex02_UI
             //    m_UserSelectedBoardSize = InputManager.GetValidNumFromUser(GameManager.k_MinBoardSize, GameManager.k_MaxBoardSize);
             //   m_UsersChoiceOfGameMode = InputManager.GetUsersChoiceOfGameMode();
             CheckForUserWithdraw();
-            m_Game.InitGame(m_UserSelectedBoardSize, m_UsersChoiceOfGameMode);
+
             PlayGame();
         }
 
         private void BuildGameFromSettings()
         {
-            m_GameForm = new GameForm();
+            m_Game = new GameManager();
+            m_Game.InitGame(3, 1);
+            m_GameForm = new GameForm(m_Game.GameBoard);
             //char buttonsArray = m_Game.GameBoard.BoardMatrix;
             int amountOfRows = m_SettingsForm.RowsUpDown;
             m_GameForm.Height = m_GameForm.Width = amountOfRows * 75;

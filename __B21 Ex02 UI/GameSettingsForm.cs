@@ -45,5 +45,9 @@ namespace __B21_Ex02_UI
             m_RowsUpDown.Value = m_ColsUpDown.Value;
         }
 
+        private void GameSettingsForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
