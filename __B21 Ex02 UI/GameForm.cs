@@ -17,42 +17,37 @@ namespace __B21_Ex02_UI
         {
             buttonsMatrix = new BoardButton[gameBoard.BoardSize, gameBoard.BoardSize];
             InitializeComponent();
+            int oldY = 0, oldX = 0;
+            int currentXPlace = 0, currentYPlace = 0;
             char?[,] boardMatrix = gameBoard.BoardMatrix;
             for(int i = 0; i < gameBoard.BoardSize; i++)
             {
                 for(int j = 0; j < gameBoard.BoardSize; j++)
                 {
                     buttonsMatrix[i,j] = new BoardButton(i, j);
-                    buttonsMatrix[i,j].Location = new Point(i*10, j*10);
-                    //this.m_GameStartButton.Name = "m_GameStartButton";
-                    buttonsMatrix[i, j].Size = new System.Drawing.Size(352, 68);
-                    buttonsMatrix[i, j].TabIndex = i+j;
-                    //buttonsMatrix[i, j].Text = "Start!";
-                    buttonsMatrix[i, j].UseVisualStyleBackColor = true;
-                    //buttonsMatrix[i, j].Click += new System.EventHandler(this.startButton_Click);
-                  //  buttonsMatrix[i,j].Show();
+                    currentXPlace = 10 + oldX;
+                    currentYPlace = 10 + oldY;
+                    buttonsMatrix[i,j].Location = new Point(40 + oldX, 40+oldY);
+                    buttonsMatrix[i, j].Size = new System.Drawing.Size(50, 50);
+                    Controls.Add(buttonsMatrix[i, j]);
+                    buttonsMatrix[i, j].Click += new System.EventHandler(OnButtonClick);
+                    
+                    oldX += currentXPlace;
                 }
+
+                oldY += currentYPlace;
             }
         }
 
         private void GameForm_Load(object sender, EventArgs e)
         {
-
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        private void OnButtonClick(object sender, EventArgs e)
         {
-
+            (sender as Button).Text = "X";
         }
 
-        private void m_ScoreBoardPlayer1_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void m_Player2Label_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
