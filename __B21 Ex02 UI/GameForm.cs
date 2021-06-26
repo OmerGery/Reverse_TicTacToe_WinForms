@@ -86,29 +86,19 @@ namespace __B21_Ex02_UI
         }
         private void OnButtonClick(object sender, EventArgs e)
         {
-            //bool squareTaken = false;
             Board.Square userSelectedSquare = (sender as BoardButton).PlaceOnBoard;
-            
-            if((sender as Button).Enabled == false)//(userSelectedSquare))
+          
+            if (m_isPlayerOneTurn)
             {
-                OutputManager.PrintInvalidSquareError();
-          //      squareTaken = true;
+                    (sender as Button).Text = GameManager.k_SymbolOne.ToString();
             }
             else
-            {
-                if (m_isPlayerOneTurn)
-                {
-                    (sender as Button).Text = GameManager.k_SymbolOne.ToString();
-                }
-                else
-                {
-                    (sender as Button).Text = GameManager.k_SymbolTwo.ToString();
-
-                }
-                m_Game.PlayHumanTurn(userSelectedSquare);
-                makeCurrentPlayerFontBold();
-                m_isPlayerOneTurn = !m_isPlayerOneTurn;
+            { 
+                (sender as Button).Text = GameManager.k_SymbolTwo.ToString();
             }
+            m_Game.PlayHumanTurn(userSelectedSquare);
+            makeCurrentPlayerFontBold();
+            m_isPlayerOneTurn = !m_isPlayerOneTurn;
 
             if((sender as Button).Enabled)
             {
