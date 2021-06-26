@@ -1,4 +1,6 @@
-﻿using __B21_Ex02_UI;
+﻿using System;
+using System.Text;
+using __B21_Ex02_UI;
 using Ex02_Logic;
 
 namespace Ex02_UI
@@ -107,16 +109,18 @@ namespace Ex02_UI
         {
             m_Game = new GameManager();
             int boardSize = m_SettingsForm.RowsUpDown;
-            int choiceOfGameMode = 0;
+            int choiceOfGameMode = 1;
             if(m_SettingsForm.Player2checkBox)
             {
-                choiceOfGameMode = 1;
+                choiceOfGameMode = 0;
             }
 
-            m_Game.InitGame(boardSize, 1);
-            string name1 = m_SettingsForm.Player1TextBox + ":";
-            string name2 = m_SettingsForm.Player2TextBox + ":";
-            m_GameForm = new GameForm(m_Game.GameBoard,name1,name2);
+            m_Game.InitGame(boardSize, choiceOfGameMode);
+            StringBuilder name1 = new StringBuilder(m_SettingsForm.Player1TextBox);
+            name1.Append(":");
+            StringBuilder name2 = new StringBuilder(m_SettingsForm.Player2TextBox);
+            name2.Append(":");
+            m_GameForm = new GameForm(m_Game.GameBoard,name1.ToString(),name2.ToString());
 
         }
     }
