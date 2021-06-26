@@ -43,9 +43,12 @@ namespace __B21_Ex02_UI
             currentXPlace = (Width / 2) - (Width / 3);
             currentYPlace = (Height) - 55;
             Player1Label.Location = new Point(currentXPlace, currentYPlace);
-            Player1ScoreBoard.Location = new Point(currentXPlace + 40, currentYPlace);
-            Player2Label.Location = new Point(currentXPlace + 90, currentYPlace);
-            Player2ScoreBoard.Location = new Point(currentXPlace + 130, currentYPlace);
+            currentXPlace += 40;
+            Player1ScoreBoard.Location = new Point(currentXPlace , currentYPlace);
+            currentXPlace += 30;
+            Player2Label.Location = new Point(currentXPlace , currentYPlace);
+            currentXPlace += 60;
+            Player2ScoreBoard.Location = new Point(currentXPlace , currentYPlace);
         }
 
         private void GameForm_Load(object sender, EventArgs e)
