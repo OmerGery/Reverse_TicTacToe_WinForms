@@ -45,9 +45,9 @@ Would You like to play another round?", i_WinnerName);
         }
 
 
-        public static void PrintInvalidSquareError()
+        public static void PrintNoNameError()
         {
-            printMessageToUser("The Square you selected is taken, Select a valid Square", "Square taken");
+            printMessageToUser("Please select a player name", "Name Not Selected!");
         }
 
     }

@@ -18,6 +18,7 @@ namespace __B21_Ex02_UI
 
         public GameForm(string i_PlayerName1,string i_PlayerName2, GameManager i_Game,int i_GameMode)
         {
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             m_UsersChoiceOfGameMode = i_GameMode;
             InitializeComponent();
             m_Game = i_Game;

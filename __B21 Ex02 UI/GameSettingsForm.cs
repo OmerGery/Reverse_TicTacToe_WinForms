@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Ex02_UI;
 
 namespace __B21_Ex02_UI
 {
@@ -29,13 +30,22 @@ namespace __B21_Ex02_UI
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            m_StartSelected = true;
-            this.Close();
+            if (m_Player1TextBox.Text == string.Empty || m_Player2TextBox.Text == string.Empty)
+            {
+                OutputManager.PrintNoNameError();
+            }
+            else
+            {
+                m_StartSelected = true;
+                Close();
+            }
+            
         }
 
 
         private void player2checkBox_CheckedChanged(object sender, EventArgs e)
         {
+           
             if(m_Player2TextBox.Enabled)
             {
                 m_Player2TextBox.Text = "Computer";

@@ -1,5 +1,6 @@
 ﻿
 using System.CodeDom;
+using System.Windows.Forms;
 
 namespace __B21_Ex02_UI
 {
@@ -70,6 +71,7 @@ namespace __B21_Ex02_UI
         /// </summary>
         private void InitializeComponent()
         {
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             this.m_GameStartButton = new System.Windows.Forms.Button();
             this.m_Player1Label = new System.Windows.Forms.Label();
             this.m_Player1TextBox = new System.Windows.Forms.TextBox();
