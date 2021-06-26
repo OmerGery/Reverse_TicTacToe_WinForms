@@ -164,11 +164,12 @@ namespace Ex02_Logic
             m_TurnCounter++;
         }
 
-        public void PlayComputerTurn()
+        public Board.Square PlayComputerTurn()
         {
             Board.Square computerAiChoice = getComputerSmartChoice();
             m_PlayerTwo.MakeMove(m_GameBoard, computerAiChoice);
             m_TurnCounter++;
+            return computerAiChoice;
         }
         
         public bool CheckWinOrTie()

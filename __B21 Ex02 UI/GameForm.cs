@@ -8,18 +8,24 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Ex02_Logic;
+using Ex02_UI;
 
 namespace __B21_Ex02_UI
 {
     public partial class GameForm : Form
     {
+        private GameManager m_Game;
         private readonly int r_FormSize;
         private BoardButton[,] m_ButtonsMatrix;
         private const int k_StartX = 20;
         private const int k_StartY = 5;
-        public GameForm(Board i_GameBoard,string i_PlayerName1,string i_PlayerName2)
+        private bool m_isPlayerOneTurn;
+
+        public GameForm(Board i_GameBoard,string i_PlayerName1,string i_PlayerName2, GameManager i_Game)
         {
             InitializeComponent();
+            m_Game = i_Game;
+            m_isPlayerOneTurn = true;
             Player1Label.Text = i_PlayerName1;
             Player2Label.Text = i_PlayerName2;
             r_FormSize = i_GameBoard.BoardSize;
@@ -68,8 +74,58 @@ namespace __B21_Ex02_UI
         }
         private void OnButtonClick(object sender, EventArgs e)
         {
-            (sender as Button).Text = "X";
+
+            Board.Square userSelectedSquare = (sender as BoardButton).PlaceOnBoard;
+            if(m_Game.GameBoard.CheckIfSquareTaken(userSelectedSquare))
+            {
+                OutputManager.PrintInvalidSquareError();
+            }
+            else
+            {
+                if (m_isPlayerOneTurn)
+                {
+                    (sender as Button).Text = GameManager.k_SymbolOne.ToString();
+                }
+                else
+                {
+                    (sender as Button).Text = GameManager.k_SymbolTwo.ToString();
+
+                }
+                m_Game.PlayHumanTurn(userSelectedSquare);
+                m_isPlayerOneTurn = !m_isPlayerOneTurn;
+            }
+            if (m_Game.CheckWinOrTie())
+            {
+                m_Game.UpdateEndRoundResult();
+                OutputManager.PrintGameResult(m_Game.IsTieGame, m_Game.PlayerOneWon);
+                //    StartOverMenu();
+            }
+
+            CheckWinningStatus();
+            if (!m_Game.PlayerTwo.IsHuman)
+            {
+                DoComputerTurn();
+            }
+            CheckWinningStatus();
+
+
         }
 
+        private void DoComputerTurn()
+        {
+
+            Board.Square computerSelection = m_Game.PlayComputerTurn();
+            m_ButtonsMatrix[computerSelection.m_Row-1, computerSelection.m_Col-1].Text = GameManager.k_SymbolTwo.ToString();
+            m_isPlayerOneTurn = !m_isPlayerOneTurn;
+        }
+
+        private void CheckWinningStatus()
+        {
+            if (m_Game.CheckWinOrTie())
+            {
+                m_Game.UpdateEndRoundResult();
+                OutputManager.PrintGameResult(m_Game.IsTieGame, m_Game.PlayerOneWon);
+            }
+        }
     }
 }

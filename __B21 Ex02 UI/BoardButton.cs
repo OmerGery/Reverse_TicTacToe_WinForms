@@ -13,21 +13,17 @@ namespace __B21_Ex02_UI
         public BoardButton(int i_Row, int i_Col)
         {
             m_PlaceOnBoard = new Board.Square();
-            m_PlaceOnBoard.m_Row = i_Row;
-            m_PlaceOnBoard.m_Col = i_Col;
+            m_PlaceOnBoard.m_Row = i_Row+1;
+            m_PlaceOnBoard.m_Col = i_Col+1;
         }
 
-        public int xPlace
+        public Board.Square PlaceOnBoard
         {
             get
             {
-                return m_PlaceOnBoard.m_Col;
-
+                return m_PlaceOnBoard;
             }
         }
-        public int yPlace
-        {
-            get { return m_PlaceOnBoard.m_Row; }
-        }
+
     }
 }

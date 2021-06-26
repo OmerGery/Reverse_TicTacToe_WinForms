@@ -1,5 +1,6 @@
 ﻿using System;
 using Ex02_Logic;
+
 namespace Ex02_UI
 {
     public class InputManager
@@ -14,10 +15,10 @@ namespace Ex02_UI
         {
             bool isValid = false;
             int validNum = 0;
-            while (!isValid)
+            while(!isValid)
             {
                 string userInput = GetDataFromUser();
-                if (userInput == UI.k_QuitSymbolOne || userInput == UI.k_QuitSymbolTwo)
+                if(userInput == UI.k_QuitSymbolOne || userInput == UI.k_QuitSymbolTwo)
                 {
                     UI.m_QSelected = true;
                     isValid = true;
@@ -32,28 +33,19 @@ namespace Ex02_UI
                     else
                     {
                         isValid = false;
-                        OutputManager.PrintInvalidNumberError();
                     }
                 }
             }
-            
+
             return validNum;
         }
 
         public static void GetSquareFromPlayer(int i_BoardSize, ref Board.Square i_SelectedSquare)
         {
-            OutputManager.PrintRequestForRow();
             int userRowChoice = GetValidNumFromUser(1, i_BoardSize);
-            if(!UI.m_QSelected)
-            {
-                OutputManager.PrintRequestForCol();
-                int userColChoice = GetValidNumFromUser(1, i_BoardSize);
-                if(!UI.m_QSelected)
-                {
-                    i_SelectedSquare.m_Row = userRowChoice;
-                    i_SelectedSquare.m_Col = userColChoice;
-                }
-            }
+            int userColChoice = GetValidNumFromUser(1, i_BoardSize);
+            i_SelectedSquare.m_Row = userRowChoice;
+            i_SelectedSquare.m_Col = userColChoice;
         }
     }
 }
