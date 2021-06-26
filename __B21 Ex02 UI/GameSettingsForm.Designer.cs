@@ -14,7 +14,7 @@ namespace __B21_Ex02_UI
         private System.Windows.Forms.TextBox m_Player2TextBox;
         private System.Windows.Forms.Label m_BoardSizeLabel;
         private System.Windows.Forms.NumericUpDown m_RowsUpDown;
-        public System.Windows.Forms.NumericUpDown m_ColsUpDown;
+        private System.Windows.Forms.NumericUpDown m_ColsUpDown;
         private System.Windows.Forms.Label m_RowsLabel;
         private System.Windows.Forms.Label m_ColsLabel;
         private System.Windows.Forms.CheckBox m_Player2checkBox;

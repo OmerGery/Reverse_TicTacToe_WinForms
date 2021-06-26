@@ -95,33 +95,40 @@ namespace Ex02_UI
         public void RunGame()
         {
             m_SettingsForm.ShowDialog();
-            buildGameFromSettings();
-            m_GameForm.ShowDialog();
-            m_Game = new GameManager();
-            //    m_UserSelectedBoardSize = InputManager.GetValidNumFromUser(GameManager.k_MinBoardSize, GameManager.k_MaxBoardSize);
-            //   m_UsersChoiceOfGameMode = InputManager.GetUsersChoiceOfGameMode();
-            CheckForUserWithdraw();
+            if(m_SettingsForm.StartSelected)
+            {
+                getDataFromSettingsForm();
+                buildGameFromSettings();
+                m_GameForm.ShowDialog();
+                m_Game = new GameManager();
 
-            PlayGame();
+                CheckForUserWithdraw();
+
+                PlayGame();
+                
+            }
+
+        }
+
+        private void getDataFromSettingsForm()
+        {
+            m_UserSelectedBoardSize = m_SettingsForm.RowsUpDown;
+            m_UsersChoiceOfGameMode = (int)GameManager.eGameModes.GameModeOptionTwo;
+            if (m_SettingsForm.Player2checkBox)
+            {
+                m_UsersChoiceOfGameMode = (int)GameManager.eGameModes.GameModeOptionOne;
+            }
         }
 
         private void buildGameFromSettings()
         {
             m_Game = new GameManager();
-            int boardSize = m_SettingsForm.RowsUpDown;
-            int choiceOfGameMode = 1;
-            if(m_SettingsForm.Player2checkBox)
-            {
-                choiceOfGameMode = 0;
-            }
-
-            m_Game.InitGame(boardSize, choiceOfGameMode);
+            m_Game.InitGame(m_UserSelectedBoardSize, m_UsersChoiceOfGameMode);
             StringBuilder name1 = new StringBuilder(m_SettingsForm.Player1TextBox);
             name1.Append(":");
             StringBuilder name2 = new StringBuilder(m_SettingsForm.Player2TextBox);
             name2.Append(":");
             m_GameForm = new GameForm(m_Game.GameBoard,name1.ToString(),name2.ToString());
-
         }
     }
 }

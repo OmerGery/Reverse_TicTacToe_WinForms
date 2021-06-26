@@ -11,13 +11,25 @@ namespace __B21_Ex02_UI
 {
     public partial class GameSettingsForm : Form
     {
+
+        private bool m_StartSelected;
+
+        public bool StartSelected
+        {
+            get
+            {
+                return m_StartSelected;
+            }
+        }
         public GameSettingsForm()
         {
+            m_StartSelected = false;
             InitializeComponent();
         }
 
         private void startButton_Click(object sender, EventArgs e)
-        { 
+        {
+            m_StartSelected = true;
             this.Close();
         }
 
