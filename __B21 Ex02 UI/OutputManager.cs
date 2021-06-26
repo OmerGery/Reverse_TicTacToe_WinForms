@@ -12,37 +12,36 @@ namespace Ex02_UI
         }
         private static void printQuestionToUser(string i_Message, string i_Caption)
         {
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(i_Message, i_Caption, buttons);
-            if (result == DialogResult.Yes)
-            {
-                //
-            }
-            else
-            {
-                // Do something  
-            }
+
         }
 
-        public static void PrintGameResult(bool i_IsTieGame, bool i_playerOneWon)
+        public static void PrintGameResult(bool i_IsTieGame, string i_WinnerName)
         {
             if (i_IsTieGame)
             {
-                printMessageToUser("Game has ended with tie result", "Tie Game");
-            }
-            else if (i_playerOneWon)
-            {
-                printMessageToUser("Player 1 wins this round", "Win");
+                printMessageToUser(@"Tie!
+Would You like to play another round? ","A Tie!");
             }
             else
             {
-                printMessageToUser("Player 2 wins this round", "Win");
+                string toPrint = string.Format(
+                    @"The Winner is {0} !
+Would You like to play another round?", i_WinnerName);
+                printMessageToUser(toPrint, "A Win!");
             }
         }
 
-        public static void PrintUserRequestForAnotherRound()
+        public static bool AskUserForAnotherRound()
         {
-            printQuestionToUser("Do you want to play another round?", "Another round?");
+            bool selectedYes = false;
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show("Do you want to play another round?", "Another round?", buttons);
+            if (result == DialogResult.Yes)
+            {
+                selectedYes = true;
+            }
+
+            return selectedYes;
         }
 
 

@@ -11,8 +11,8 @@ namespace Ex02_Logic
 
         public enum eGameModes
         {
-            GameModeOptionOne = 1,
-            GameModeOptionTwo
+            ComputerGameMode = 1,
+            HumanGameMode
         }
 
         private bool m_PlayerOneWon;
@@ -78,9 +78,10 @@ namespace Ex02_Logic
 
         public void InitGame(int i_BoardSize, int i_UsersChoiceOfGameMode) 
         {
+            m_IsTieGame = false;
             m_TurnCounter = 0;
             m_GameBoard = new Board(i_BoardSize);
-            if (i_UsersChoiceOfGameMode == (int)eGameModes.GameModeOptionOne)
+            if (i_UsersChoiceOfGameMode == (int)eGameModes.ComputerGameMode)
             {
                 m_PlayerTwo.IsHuman = false;
             }
@@ -105,7 +106,6 @@ namespace Ex02_Logic
             }
         }
 
-        
 
         private Board.Square getComputerSmartChoice()
         {
@@ -133,7 +133,7 @@ namespace Ex02_Logic
 
         public void CheckTie()
         {
-            if(m_TurnCounter == (int)Math.Pow(m_GameBoard.BoardSize, 2) - 1)
+            if(m_TurnCounter == (int)Math.Pow(m_GameBoard.BoardSize, 2))
             {
                 m_IsTieGame = true;
             }
