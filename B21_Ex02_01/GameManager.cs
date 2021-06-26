@@ -16,7 +16,6 @@ namespace Ex02_Logic
         }
 
         private bool m_PlayerOneWon;
-//        public static bool m_QSelected;
         private Player m_PlayerOne;
         private Player m_PlayerTwo;
         private bool m_IsGameActive;

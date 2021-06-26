@@ -93,7 +93,7 @@ namespace Ex02_UI
         public void RunGame()
         {
             m_SettingsForm.ShowDialog();
-            BuildGameFromSettings();
+            buildGameFromSettings();
             m_GameForm.ShowDialog();
             m_Game = new GameManager();
             //    m_UserSelectedBoardSize = InputManager.GetValidNumFromUser(GameManager.k_MinBoardSize, GameManager.k_MaxBoardSize);
@@ -103,16 +103,22 @@ namespace Ex02_UI
             PlayGame();
         }
 
-        private void BuildGameFromSettings()
+        private void buildGameFromSettings()
         {
             m_Game = new GameManager();
-            m_Game.InitGame(3, 1);
+            int boardSize = m_SettingsForm.RowsUpDown;
+            int choiceOfGameMode = 0;
+            if(m_SettingsForm.Player2checkBox)
+            {
+                choiceOfGameMode = 1;
+            }
+
+            m_Game.InitGame(boardSize, 1);
+            
             m_GameForm = new GameForm(m_Game.GameBoard);
-            //char buttonsArray = m_Game.GameBoard.BoardMatrix;
-            int amountOfRows = m_SettingsForm.RowsUpDown;
-            m_GameForm.Height = m_GameForm.Width = amountOfRows * 75;
-            m_GameForm.Player1Label =  m_SettingsForm.Player1TextBox + ":";
-            m_GameForm.Player2Label = m_SettingsForm.Player2TextBox + ":";
+            m_GameForm.Player1Label.Text = m_SettingsForm.Player1TextBox + ":";
+            m_GameForm.Player2Label.Text = m_SettingsForm.Player2TextBox + ":";
+
         }
     }
 }

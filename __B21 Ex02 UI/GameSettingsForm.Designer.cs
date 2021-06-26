@@ -135,12 +135,12 @@ namespace __B21_Ex02_UI
             // 
             this.m_RowsUpDown.Location = new System.Drawing.Point(118, 243);
             this.m_RowsUpDown.Maximum = new decimal(new int[] {
-            10,
+            9,
             0,
             0,
             0});
             this.m_RowsUpDown.Minimum = new decimal(new int[] {
-            4,
+            3,
             0,
             0,
             0});
@@ -148,7 +148,7 @@ namespace __B21_Ex02_UI
             this.m_RowsUpDown.Size = new System.Drawing.Size(120, 26);
             this.m_RowsUpDown.TabIndex = 8;
             this.m_RowsUpDown.Value = new decimal(new int[] {
-            4,
+            3,
             0,
             0,
             0});
@@ -158,12 +158,12 @@ namespace __B21_Ex02_UI
             // 
             this.m_ColsUpDown.Location = new System.Drawing.Point(398, 243);
             this.m_ColsUpDown.Maximum = new decimal(new int[] {
-            10,
+            9,
             0,
             0,
             0});
             this.m_ColsUpDown.Minimum = new decimal(new int[] {
-            4,
+            3,
             0,
             0,
             0});
@@ -171,7 +171,7 @@ namespace __B21_Ex02_UI
             this.m_ColsUpDown.Size = new System.Drawing.Size(120, 26);
             this.m_ColsUpDown.TabIndex = 9;
             this.m_ColsUpDown.Value = new decimal(new int[] {
-            4,
+            3,
             0,
             0,
             0});
