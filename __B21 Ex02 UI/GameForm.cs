@@ -42,10 +42,10 @@ namespace __B21_Ex02_UI
                     m_ButtonsMatrix[i, j] = new BoardButton(i, j);
                     m_ButtonsMatrix[i, j].Text = string.Empty;
                     m_ButtonsMatrix[i, j].Location = new Point(currentXPlace, currentYPlace);
-                    m_ButtonsMatrix[i, j].Size = new System.Drawing.Size(50, 40);
+                    m_ButtonsMatrix[i, j].Size = new Size(50, 40);
                     Controls.Add(m_ButtonsMatrix[i, j]);
-                    m_ButtonsMatrix[i, j].Click += new System.EventHandler(OnButtonClick);
-
+                    m_ButtonsMatrix[i, j].Click += OnButtonClick;
+                    m_ButtonsMatrix[i, j].Enabled = true;
                     currentXPlace += 60;
                 }
 
@@ -86,12 +86,13 @@ namespace __B21_Ex02_UI
         }
         private void OnButtonClick(object sender, EventArgs e)
         {
-            bool squareTaken = false;
+            //bool squareTaken = false;
             Board.Square userSelectedSquare = (sender as BoardButton).PlaceOnBoard;
-            if(m_Game.GameBoard.CheckIfSquareTaken(userSelectedSquare))
+            
+            if((sender as Button).Enabled == false)//(userSelectedSquare))
             {
                 OutputManager.PrintInvalidSquareError();
-                squareTaken = true;
+          //      squareTaken = true;
             }
             else
             {
@@ -109,8 +110,9 @@ namespace __B21_Ex02_UI
                 m_isPlayerOneTurn = !m_isPlayerOneTurn;
             }
 
-            if(!squareTaken)
+            if((sender as Button).Enabled)
             {
+                (sender as Button).Enabled = false;
                 bool gameFinished = CheckWinningStatus();
                 if (gameFinished)
                 {
@@ -145,6 +147,7 @@ namespace __B21_Ex02_UI
         private void DoComputerTurn()
         { 
             Board.Square computerSelection = m_Game.PlayComputerTurn();
+            m_ButtonsMatrix[computerSelection.m_Row - 1, computerSelection.m_Col - 1].Enabled = false;
             m_ButtonsMatrix[computerSelection.m_Row-1, computerSelection.m_Col-1].Text = GameManager.k_SymbolTwo.ToString();
             m_isPlayerOneTurn = !m_isPlayerOneTurn;
         }
@@ -188,6 +191,7 @@ namespace __B21_Ex02_UI
             foreach(Button button in m_ButtonsMatrix)
             {
                 button.Text = string.Empty;
+                button.Enabled = true;
             }
         }
 
