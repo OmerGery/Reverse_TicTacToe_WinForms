@@ -13,29 +13,29 @@ namespace __B21_Ex02_UI
     public partial class GameForm : Form
     {
         private BoardButton[,] buttonsMatrix;
+        private const int startX = 5;
+        private const int startY = 5;
         public GameForm(Board gameBoard)
         {
             buttonsMatrix = new BoardButton[gameBoard.BoardSize, gameBoard.BoardSize];
             InitializeComponent();
-            int oldY = 0, oldX = 0;
-            int currentXPlace = 0, currentYPlace = 0;
+            int currentXPlace = 0, currentYPlace = startY;
             char?[,] boardMatrix = gameBoard.BoardMatrix;
             for(int i = 0; i < gameBoard.BoardSize; i++)
             {
-                for(int j = 0; j < gameBoard.BoardSize; j++)
+                currentXPlace = startX;
+                for (int j = 0; j < gameBoard.BoardSize; j++)
                 {
                     buttonsMatrix[i,j] = new BoardButton(i, j);
-                    currentXPlace = 10 + oldX;
-                    currentYPlace = 10 + oldY;
-                    buttonsMatrix[i,j].Location = new Point(40 + oldX, 40+oldY);
+                    buttonsMatrix[i,j].Location = new Point(currentXPlace,currentYPlace);
                     buttonsMatrix[i, j].Size = new System.Drawing.Size(50, 50);
                     Controls.Add(buttonsMatrix[i, j]);
                     buttonsMatrix[i, j].Click += new System.EventHandler(OnButtonClick);
                     
-                    oldX += currentXPlace;
+                    currentXPlace += 60;
                 }
 
-                oldY += currentYPlace;
+                currentYPlace += 60;
             }
         }
 
