@@ -114,10 +114,9 @@ namespace Ex02_UI
             }
 
             m_Game.InitGame(boardSize, 1);
-            
-            m_GameForm = new GameForm(m_Game.GameBoard);
-            m_GameForm.Player1Label.Text = m_SettingsForm.Player1TextBox + ":";
-            m_GameForm.Player2Label.Text = m_SettingsForm.Player2TextBox + ":";
+            string name1 = m_SettingsForm.Player1TextBox + ":";
+            string name2 = m_SettingsForm.Player2TextBox + ":";
+            m_GameForm = new GameForm(m_Game.GameBoard,name1,name2);
 
         }
     }

@@ -16,18 +16,19 @@ namespace __B21_Ex02_UI
         private BoardButton[,] buttonsMatrix;
         private const int startX = 20;
         private const int startY = 5;
-        public GameForm(Board gameBoard)
+        public GameForm(Board i_GameBoard,string i_PlayerName1,string i_PlayerName2)
         {
             InitializeComponent();
-            Height = Width = gameBoard.BoardSize * 75;
-            buttonsMatrix = new BoardButton[gameBoard.BoardSize, gameBoard.BoardSize];
-            //       InitializeComponent();
+            Player1Label.Text = i_PlayerName1;
+            Player2Label.Text = i_PlayerName2;
+            Height = Width = i_GameBoard.BoardSize * 75;
+            buttonsMatrix = new BoardButton[i_GameBoard.BoardSize, i_GameBoard.BoardSize];
             int currentXPlace = 0, currentYPlace = startY;
-            char?[,] boardMatrix = gameBoard.BoardMatrix;
-            for(int i = 0; i < gameBoard.BoardSize; i++)
+            char?[,] boardMatrix = i_GameBoard.BoardMatrix;
+            for(int i = 0; i < i_GameBoard.BoardSize; i++)
             {
                 currentXPlace = startX;
-                for (int j = 0; j < gameBoard.BoardSize; j++)
+                for (int j = 0; j < i_GameBoard.BoardSize; j++)
                 {
                     buttonsMatrix[i,j] = new BoardButton(i, j);
                     buttonsMatrix[i,j].Location = new Point(currentXPlace,currentYPlace);
@@ -43,11 +44,11 @@ namespace __B21_Ex02_UI
             currentXPlace = (Width / 2) - (Width / 3);
             currentYPlace = (Height) - 55;
             Player1Label.Location = new Point(currentXPlace, currentYPlace);
-            currentXPlace += 40;
+            currentXPlace = Player1Label.Location.X + Player1Label.Width ;
             Player1ScoreBoard.Location = new Point(currentXPlace , currentYPlace);
-            currentXPlace += 30;
+            currentXPlace = Player1ScoreBoard.Location.X + Player1ScoreBoard.Width+5;
             Player2Label.Location = new Point(currentXPlace , currentYPlace);
-            currentXPlace += 60;
+            currentXPlace = Player2Label.Location.X + Player2Label.Width;
             Player2ScoreBoard.Location = new Point(currentXPlace , currentYPlace);
         }
 
