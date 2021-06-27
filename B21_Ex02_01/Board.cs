@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Ex02_Logic
+namespace Ex05_Logic
 {
     public class Board
     {

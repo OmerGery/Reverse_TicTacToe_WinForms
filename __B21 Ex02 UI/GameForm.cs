@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Ex02_Logic;
-using Ex02_UI;
+using Ex05_Logic;
+using Ex05_UI;
 
-namespace __B21_Ex02_UI
+namespace Ex05_UI
 {
     public partial class GameForm : Form
     {
@@ -106,7 +106,7 @@ namespace __B21_Ex02_UI
             if((sender as Button).Enabled)
             {
                 (sender as Button).Enabled = false;
-                bool gameFinished = CheckWinningStatus();
+                bool gameFinished = checkWinningStatus();
                 if (gameFinished)
                 {
                     roundWinner();
@@ -115,10 +115,10 @@ namespace __B21_Ex02_UI
                 {
                     if (m_UsersChoiceOfGameMode == (int)GameManager.eGameModes.ComputerGameMode)
                     {
-                        DoComputerTurn();
+                        doComputerTurn();
                     }
 
-                    if(CheckWinningStatus())
+                    if(checkWinningStatus())
                     {
                         roundWinner();
                     }
@@ -135,11 +135,11 @@ namespace __B21_Ex02_UI
             }
 
             currentPlayerName = currentPlayerName.Remove(currentPlayerName.Length - 1, 1);
-            OutputManager.PrintGameResult(m_Game.IsTieGame, currentPlayerName);
-            EndOfRound();
+            bool toPlayAnotherRound = OutputManager.AskUserForAnotherRound(m_Game.IsTieGame, currentPlayerName);
+            EndOfRound(toPlayAnotherRound);
         }
 
-        private void DoComputerTurn()
+        private void doComputerTurn()
         { 
             Board.Square computerSelection = m_Game.PlayComputerTurn();
             m_ButtonsMatrix[computerSelection.m_Row - 1, computerSelection.m_Col - 1].Enabled = false;
@@ -147,7 +147,7 @@ namespace __B21_Ex02_UI
             m_isPlayerOneTurn = !m_isPlayerOneTurn;
         }
 
-        private bool CheckWinningStatus()
+        private bool checkWinningStatus()
         {
             bool gameFinished = m_Game.CheckWinOrTie() || m_Game.IsTieGame;
             if (gameFinished)
@@ -158,10 +158,9 @@ namespace __B21_Ex02_UI
             return gameFinished;
         }
 
-        public void EndOfRound()
-        {
-            bool isAnotherRound = OutputManager.AskUserForAnotherRound();
-            if (isAnotherRound)
+        public void EndOfRound(bool i_PlayAnotherRound)
+        { 
+            if (i_PlayAnotherRound)
             {
                 GameManager game = new GameManager();
                 m_Game.InitGame(r_FormSize, m_UsersChoiceOfGameMode);

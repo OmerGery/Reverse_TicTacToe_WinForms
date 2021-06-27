@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
-using Ex02_Logic;
+using Ex05_Logic;
 
-namespace __B21_Ex02_UI
+namespace Ex05_UI
 {
     public class BoardButton : Button
     {

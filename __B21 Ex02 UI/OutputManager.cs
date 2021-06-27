@@ -1,6 +1,8 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Text;
+using System.Windows.Forms;
 
-namespace Ex02_UI
+namespace Ex05_UI
 {
     public class OutputManager
     {
@@ -9,30 +11,34 @@ namespace Ex02_UI
             MessageBox.Show(i_Message, i_Caption);
         }
 
-        public static void PrintGameResult(bool i_IsTieGame, string i_WinnerName)
+        public static bool AskUserForAnotherRound(bool i_IsTieGame, string i_WinnerName)
         {
+            bool anotherRound;
             if (i_IsTieGame)
             {
-                printMessageToUser(
-                    @"Tie!
-Would You like to play another round? ", 
-"A Tie!");
+                anotherRound = printGameResult("A Tie!", "Tie!");
             }
             else
             {
-                string toPrint = string.Format(
-                    @"The Winner is {0} !
-Would You like to play another round?", 
-i_WinnerName);
-                printMessageToUser(toPrint, "A Win!");
+                StringBuilder winnerStatment = new StringBuilder("The winner is ");
+                winnerStatment.Append(i_WinnerName);
+                winnerStatment.Append("!");
+                anotherRound = printGameResult(winnerStatment.ToString(), "Win!");
             }
+
+            return anotherRound;
         }
 
-        public static bool AskUserForAnotherRound()
+        private static bool printGameResult(string i_Statement, string i_Title)
         {
             bool selectedYes = false;
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show("Do you want to play another round?", "Another round?", buttons);
+            string toPrint = 
+                string.Format(
+                    @"{0}
+Would you like to play another round?",
+                    i_Statement);
+            DialogResult result = MessageBox.Show(toPrint, i_Title, buttons);
             if (result == DialogResult.Yes)
             {
                 selectedYes = true;

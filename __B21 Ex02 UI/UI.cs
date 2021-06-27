@@ -1,9 +1,7 @@
-﻿using System;
-using System.Text;
-using __B21_Ex02_UI;
-using Ex02_Logic;
+﻿using System.Text;
+using Ex05_Logic;
 
-namespace Ex02_UI
+namespace Ex05_UI
 {
     public class UI
     {

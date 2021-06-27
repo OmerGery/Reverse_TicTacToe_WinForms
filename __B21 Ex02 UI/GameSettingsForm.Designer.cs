@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace __B21_Ex02_UI
+namespace Ex05_UI
 {
     public partial class GameSettingsForm
     {

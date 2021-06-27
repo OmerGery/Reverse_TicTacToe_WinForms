@@ -1,6 +1,6 @@
-﻿using Ex02_UI;
+﻿using Ex05_UI;
 
-namespace __B21_Ex02_UI
+namespace Ex05_UI
 {
     public static class Program
     {

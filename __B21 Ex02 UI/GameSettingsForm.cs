@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Ex02_UI;
+using Ex05_UI;
 
-namespace __B21_Ex02_UI
+namespace Ex05_UI
 {
     public partial class GameSettingsForm : Form
     {
