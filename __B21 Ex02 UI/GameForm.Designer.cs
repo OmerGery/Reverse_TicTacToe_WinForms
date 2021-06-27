@@ -1,9 +1,6 @@
-﻿
-using System.Drawing;
-
-namespace __B21_Ex02_UI
+﻿namespace __B21_Ex02_UI
 {
-    partial class GameForm
+    public partial class GameForm
     {
         /// <summary>
         /// Required designer variable.
@@ -20,6 +17,7 @@ namespace __B21_Ex02_UI
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -107,6 +105,7 @@ namespace __B21_Ex02_UI
                 return m_Player1Label;
             }
         }
+
         public System.Windows.Forms.Label Player2Label
         {
             get
@@ -114,6 +113,7 @@ namespace __B21_Ex02_UI
                 return m_Player2Label;
             }
         }
+
         public System.Windows.Forms.Label Player1ScoreBoard
         {
             get
@@ -121,6 +121,7 @@ namespace __B21_Ex02_UI
                 return m_Player1ScoreBoard;
             }
         }
+
         public System.Windows.Forms.Label Player2ScoreBoard
         {
             get

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Text;
-using System.Windows.Forms;
-using Ex02_Logic;
+﻿using System.Windows.Forms;
+
 namespace Ex02_UI
 {
     public class OutputManager
@@ -10,23 +8,22 @@ namespace Ex02_UI
         {
             MessageBox.Show(i_Message, i_Caption);
         }
-        private static void printQuestionToUser(string i_Message, string i_Caption)
-        {
-
-        }
 
         public static void PrintGameResult(bool i_IsTieGame, string i_WinnerName)
         {
             if (i_IsTieGame)
             {
-                printMessageToUser(@"Tie!
-Would You like to play another round? ","A Tie!");
+                printMessageToUser(
+                    @"Tie!
+Would You like to play another round? ", 
+"A Tie!");
             }
             else
             {
                 string toPrint = string.Format(
                     @"The Winner is {0} !
-Would You like to play another round?", i_WinnerName);
+Would You like to play another round?", 
+i_WinnerName);
                 printMessageToUser(toPrint, "A Win!");
             }
         }
@@ -44,11 +41,9 @@ Would You like to play another round?", i_WinnerName);
             return selectedYes;
         }
 
-
         public static void PrintNoNameError()
         {
             printMessageToUser("Please select a player name", "Name Not Selected!");
         }
-
     }
 }

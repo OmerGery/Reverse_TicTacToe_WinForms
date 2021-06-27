@@ -12,7 +12,6 @@ namespace __B21_Ex02_UI
 {
     public partial class GameSettingsForm : Form
     {
-
         private bool m_StartSelected;
 
         public bool StartSelected
@@ -22,6 +21,7 @@ namespace __B21_Ex02_UI
                 return m_StartSelected;
             }
         }
+
         public GameSettingsForm()
         {
             m_StartSelected = false;
@@ -39,13 +39,10 @@ namespace __B21_Ex02_UI
                 m_StartSelected = true;
                 Close();
             }
-            
         }
-
 
         private void player2checkBox_CheckedChanged(object sender, EventArgs e)
         {
-           
             if(m_Player2TextBox.Enabled)
             {
                 m_Player2TextBox.Text = "Computer";
@@ -54,7 +51,8 @@ namespace __B21_Ex02_UI
             {
                 m_Player2TextBox.Text = string.Empty;
             }
-            m_Player2TextBox.Enabled = !(m_Player2TextBox.Enabled);
+
+            m_Player2TextBox.Enabled = !m_Player2TextBox.Enabled;
         }
 
         private void rowsUpDown_ValueChanged(object sender, EventArgs e)
@@ -69,7 +67,6 @@ namespace __B21_Ex02_UI
 
         private void GameSettingsForm_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -30,6 +30,7 @@ namespace Ex02_Logic
                 return m_IsGameActive;
             }
         }
+
         public Player PlayerOne
         {
             get
@@ -37,6 +38,7 @@ namespace Ex02_Logic
                 return m_PlayerOne;
             }
         }
+
         public Player PlayerTwo
         {
             get
@@ -44,6 +46,7 @@ namespace Ex02_Logic
                 return m_PlayerTwo;
             }
         }
+
         public bool IsTieGame
         {
             get
@@ -51,6 +54,7 @@ namespace Ex02_Logic
                 return m_IsTieGame;
             }
         }
+
         public bool PlayerOneWon
         {
             get
@@ -58,8 +62,6 @@ namespace Ex02_Logic
                 return m_PlayerOneWon;
             }
         }
-
-        
 
         public Board GameBoard
         {
@@ -87,8 +89,6 @@ namespace Ex02_Logic
             }
         }
 
-      
-
         public void UpdateEndRoundResult()
         {
             m_PlayerOneWon = false;
@@ -105,7 +105,6 @@ namespace Ex02_Logic
                 }
             }
         }
-
 
         private Board.Square getComputerSmartChoice()
         {
@@ -191,6 +190,7 @@ namespace Ex02_Logic
             {
                 CheckTie();
             }
+
             return hasPlayerWon;
         }
     }

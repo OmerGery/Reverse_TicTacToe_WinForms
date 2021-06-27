@@ -47,7 +47,7 @@
                 }
             }
 
-            public void MakeMove(Board i_GameBoard,Board.Square i_Square)
+            public void MakeMove(Board i_GameBoard, Board.Square i_Square)
             {
                 i_GameBoard.AddShape(Symbol, i_Square);
             }

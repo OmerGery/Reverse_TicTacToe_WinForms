@@ -8,15 +8,15 @@ namespace __B21_Ex02_UI
 {
     public partial class GameForm : Form
     {
-        private GameManager m_Game;
-        private readonly int r_FormSize;
-        private BoardButton[,] m_ButtonsMatrix;
         private const int k_StartX = 20;
         private const int k_StartY = 5;
+        private readonly int r_FormSize;
+        private GameManager m_Game;
+        private BoardButton[,] m_ButtonsMatrix;
         private bool m_isPlayerOneTurn;
         private int m_UsersChoiceOfGameMode;
 
-        public GameForm(string i_PlayerName1,string i_PlayerName2, GameManager i_Game,int i_GameMode)
+        public GameForm(string i_PlayerName1, string i_PlayerName2, GameManager i_Game, int i_GameMode)
         {
             FormBorderStyle = FormBorderStyle.FixedSingle;
             m_UsersChoiceOfGameMode = i_GameMode;
@@ -34,10 +34,10 @@ namespace __B21_Ex02_UI
         private void buildButtonsMatrix()
         {
             m_ButtonsMatrix = new BoardButton[r_FormSize, r_FormSize];
-            int currentXPlace , currentYPlace = k_StartY;
+            int currentYPlace = k_StartY;
             for (int i = 0; i < m_Game.GameBoard.BoardSize; i++)
             {
-                currentXPlace = k_StartX;
+                int currentXPlace = k_StartX;
                 for (int j = 0; j < m_Game.GameBoard.BoardSize; j++)
                 {
                     m_ButtonsMatrix[i, j] = new BoardButton(i, j);
@@ -56,8 +56,8 @@ namespace __B21_Ex02_UI
 
         private void initPlayerLabels()
         {
-            int currentXPlace = m_ButtonsMatrix[0, r_FormSize/2 - 1 ].Location.X + 25;
-            int currentYPlace = (Height) - 55;
+            int currentXPlace = m_ButtonsMatrix[0, (r_FormSize / 2) - 1].Location.X + 25;
+            int currentYPlace = (Height) -55;
             Player1Label.Location = new Point(currentXPlace, currentYPlace);
             currentXPlace = Player1Label.Location.X + Player1Label.Width;
             Player1ScoreBoard.Location = new Point(currentXPlace, currentYPlace);
@@ -85,6 +85,7 @@ namespace __B21_Ex02_UI
         private void GameForm_Load(object sender, EventArgs e)
         {
         }
+
         private void OnButtonClick(object sender, EventArgs e)
         {
             Board.Square userSelectedSquare = (sender as BoardButton).PlaceOnBoard;
@@ -97,6 +98,7 @@ namespace __B21_Ex02_UI
             { 
                 (sender as Button).Text = GameManager.k_SymbolTwo.ToString();
             }
+
             m_Game.PlayHumanTurn(userSelectedSquare);
             makeCurrentPlayerFontBold();
             m_isPlayerOneTurn = !m_isPlayerOneTurn;
@@ -115,6 +117,7 @@ namespace __B21_Ex02_UI
                     {
                         DoComputerTurn();
                     }
+
                     if(CheckWinningStatus())
                     {
                         roundWinner();
@@ -130,6 +133,7 @@ namespace __B21_Ex02_UI
             {
                 currentPlayerName = Player1Label.Text;
             }
+
             currentPlayerName = currentPlayerName.Remove(currentPlayerName.Length - 1, 1);
             OutputManager.PrintGameResult(m_Game.IsTieGame, currentPlayerName);
             EndOfRound();
@@ -139,7 +143,7 @@ namespace __B21_Ex02_UI
         { 
             Board.Square computerSelection = m_Game.PlayComputerTurn();
             m_ButtonsMatrix[computerSelection.m_Row - 1, computerSelection.m_Col - 1].Enabled = false;
-            m_ButtonsMatrix[computerSelection.m_Row-1, computerSelection.m_Col-1].Text = GameManager.k_SymbolTwo.ToString();
+            m_ButtonsMatrix[computerSelection.m_Row - 1, computerSelection.m_Col - 1].Text = GameManager.k_SymbolTwo.ToString();
             m_isPlayerOneTurn = !m_isPlayerOneTurn;
         }
 

@@ -1,12 +1,9 @@
-﻿
-using System.CodeDom;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace __B21_Ex02_UI
 {
-    partial class GameSettingsForm
-    { 
-      
+    public partial class GameSettingsForm
+    {
         private System.ComponentModel.IContainer components = null;
 
         private System.Windows.Forms.Button m_GameStartButton;
@@ -60,6 +57,7 @@ namespace __B21_Ex02_UI
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -247,11 +245,6 @@ namespace __B21_Ex02_UI
             this.PerformLayout();
 
         }
-
         #endregion
-
-
-
-            }
+    }
 }
-
