@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{59BC8A4D-37BC-4283-BC63-D35B0D975AA3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>__B21_Ex02_UI</RootNamespace>
-    <AssemblyName>__B21 Ex02 UI</AssemblyName>
+    <RootNamespace>Ex05_UI</RootNamespace>
+    <AssemblyName>Ex05_UI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -65,7 +65,7 @@
     <Compile Include="OutputManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI.cs" />
+    <Compile Include="Ui.cs" />
     <EmbeddedResource Include="GameForm.resx">
       <DependentUpon>GameForm.cs</DependentUpon>
     </EmbeddedResource>

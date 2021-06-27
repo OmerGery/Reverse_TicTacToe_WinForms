@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2B87EE46-1665-4026-8E9F-ADA3722289AB}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>B21_Ex02_01</RootNamespace>
-    <AssemblyName>B21_Ex02_01</AssemblyName>
+    <RootNamespace>Ex05_Logic</RootNamespace>
+    <AssemblyName>Ex05_Logic</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

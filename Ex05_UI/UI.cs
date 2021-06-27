@@ -3,12 +3,12 @@ using Ex05_Logic;
 
 namespace Ex05_UI
 {
-    public class UI
+    public class Ui
     {
         private readonly GameSettingsForm r_SettingsForm;
         private GameForm m_GameForm;
 
-        public UI()
+        public Ui()
         {
             r_SettingsForm = new GameSettingsForm();
         }

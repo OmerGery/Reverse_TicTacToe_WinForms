@@ -87,42 +87,53 @@ namespace Ex05_UI
 
         private void OnButtonClick(object sender, EventArgs e)
         {
-            BoardButton senderButton = sender as BoardButton;
-            Board.Square userSelectedSquare = senderButton.PlaceOnBoard;
-
-            if (m_IsPlayerOneTurn)
+            if (sender is BoardButton senderButton)
             {
-                    senderButton.Text = GameManager.k_SymbolOne.ToString();
+                Board.Square userSelectedSquare = senderButton.PlaceOnBoard;
+                drawSymbol(senderButton);
+                updateTurn(userSelectedSquare, senderButton);
+                updateWinningStatus();
+            }
+        }
+
+        private void updateWinningStatus()
+        {
+            bool gameFinished = checkWinningStatus();
+            if (gameFinished)
+            {
+                roundWinner();
             }
             else
-            { 
-                senderButton.Text = GameManager.k_SymbolTwo.ToString();
-            }
-
-            r_Game.PlayHumanTurn(userSelectedSquare);
-            makeCurrentPlayerFontBold();
-            m_IsPlayerOneTurn = !m_IsPlayerOneTurn;
-
-            if(senderButton.Enabled)
             {
-                senderButton.Enabled = false;
-                bool gameFinished = checkWinningStatus();
-                if (gameFinished)
+                if (r_UsersChoiceOfGameMode == (int)GameManager.eGameModes.ComputerGameMode)
+                {
+                    doComputerTurn();
+                }
+
+                if (checkWinningStatus())
                 {
                     roundWinner();
                 }
-                else
-                {
-                    if (r_UsersChoiceOfGameMode == (int)GameManager.eGameModes.ComputerGameMode)
-                    {
-                        doComputerTurn();
-                    }
+            }
+        }
 
-                    if(checkWinningStatus())
-                    {
-                        roundWinner();
-                    }
-                }
+        private void updateTurn(Board.Square i_UserSelectedSquare, BoardButton i_SenderButton)
+        {
+            r_Game.PlayHumanTurn(i_UserSelectedSquare);
+            m_IsPlayerOneTurn = !m_IsPlayerOneTurn;
+            makeCurrentPlayerFontBold();
+            i_SenderButton.Enabled = false;
+        }
+
+        private void drawSymbol(BoardButton i_SenderButton)
+        {
+            if (m_IsPlayerOneTurn)
+            {
+                i_SenderButton.Text = GameManager.k_SymbolOne.ToString();
+            }
+            else
+            {
+                i_SenderButton.Text = GameManager.k_SymbolTwo.ToString();
             }
         }
 
@@ -136,7 +147,7 @@ namespace Ex05_UI
 
             currentPlayerName = currentPlayerName.Remove(currentPlayerName.Length - 1, 1);
             bool toPlayAnotherRound = OutputManager.AskUserForAnotherRound(r_Game.IsTieGame, currentPlayerName);
-            EndOfRound(toPlayAnotherRound);
+            endOfRound(toPlayAnotherRound);
         }
 
         private void doComputerTurn()
@@ -145,6 +156,7 @@ namespace Ex05_UI
             m_ButtonsMatrix[computerSelection.m_Row - 1, computerSelection.m_Col - 1].Enabled = false;
             m_ButtonsMatrix[computerSelection.m_Row - 1, computerSelection.m_Col - 1].Text = GameManager.k_SymbolTwo.ToString();
             m_IsPlayerOneTurn = !m_IsPlayerOneTurn;
+            makeCurrentPlayerFontBold();
         }
 
         private bool checkWinningStatus()
@@ -158,7 +170,7 @@ namespace Ex05_UI
             return gameFinished;
         }
 
-        public void EndOfRound(bool i_PlayAnotherRound)
+        private void endOfRound(bool i_PlayAnotherRound)
         { 
             if (i_PlayAnotherRound)
             {
@@ -181,7 +193,7 @@ namespace Ex05_UI
 
         private void clearBoard()
         {
-            foreach(Button button in m_ButtonsMatrix)
+            foreach(BoardButton button in m_ButtonsMatrix)
             {
                 button.Text = string.Empty;
                 button.Enabled = true;
