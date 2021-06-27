@@ -44,7 +44,7 @@ namespace Ex05_UI
                     m_ButtonsMatrix[i, j].Location = new Point(currentXPlace, currentYPlace);
                     m_ButtonsMatrix[i, j].Size = new Size(50, 40);
                     Controls.Add(m_ButtonsMatrix[i, j]);
-                    m_ButtonsMatrix[i, j].Click += OnButtonClick;
+                    m_ButtonsMatrix[i, j].Click += boardButton_Click;
                     m_ButtonsMatrix[i, j].Enabled = true;
                     currentXPlace += 60;
                 }
@@ -85,7 +85,7 @@ namespace Ex05_UI
         {
         }
 
-        private void OnButtonClick(object sender, EventArgs e)
+        private void boardButton_Click(object sender, EventArgs e)
         {
             if (sender is BoardButton senderButton)
             {
