@@ -2,6 +2,7 @@
 ### By Omer Gery & Daniel Dolev.
 The Game is implemented by an Object-Oriented Win Form Application in the .NET Framework.
 
+
 There are 2 forms - game settings implemented with the .NET Designer.
 
 The other is the Game itself - a dynamic form - therefore it's implemented manually - a buttons matrix.
