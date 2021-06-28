@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using Ex05_Logic;
 
@@ -42,6 +43,8 @@ namespace Ex05_UI
                     m_ButtonsMatrix[i, j] = new BoardButton(i, j);
                     m_ButtonsMatrix[i, j].TabStop = false;
                     m_ButtonsMatrix[i, j].Text = string.Empty;
+                    m_ButtonsMatrix[i, j].Font = new Font(m_ButtonsMatrix[i,j].Font, FontStyle.Bold);
+                    m_ButtonsMatrix[i, j].FlatStyle = FlatStyle.Popup;
                     m_ButtonsMatrix[i, j].Location = new Point(currentXPlace, currentYPlace);
                     m_ButtonsMatrix[i, j].Size = new Size(50, 40);
                     Controls.Add(m_ButtonsMatrix[i, j]);
@@ -90,6 +93,7 @@ namespace Ex05_UI
         {
             if (sender is BoardButton senderButton)
             {
+                OutputManager.PlayClick();
                 Board.Square userSelectedSquare = senderButton.PlaceOnBoard;
                 drawSymbol(senderButton);
                 updateTurn(userSelectedSquare, senderButton);

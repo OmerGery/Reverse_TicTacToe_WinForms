@@ -75,11 +75,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(720, 498);
             this.Controls.Add(this.m_Player2ScoreBoard);
             this.Controls.Add(this.m_Player1ScoreBoard);
             this.Controls.Add(this.m_Player2Label);
             this.Controls.Add(this.m_Player1Label);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

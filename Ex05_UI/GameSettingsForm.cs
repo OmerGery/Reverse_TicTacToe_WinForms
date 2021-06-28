@@ -26,7 +26,6 @@ namespace Ex05_UI
         {
             if (m_Player1TextBox.Text == string.Empty || m_Player2TextBox.Text == string.Empty)
             {
-                System.Media.SystemSounds.Exclamation.Play();
                 OutputManager.PrintNoNameError();
             }
             else
