@@ -95,7 +95,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ex05_Logic\Logic.csproj">
+    <ProjectReference Include="..\Logic\Logic.csproj">
       <Project>{2b87ee46-1665-4026-8e9f-ada3722289ab}</Project>
       <Name>Logic</Name>
     </ProjectReference>
