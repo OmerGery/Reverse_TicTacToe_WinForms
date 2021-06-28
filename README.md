@@ -1,7 +1,11 @@
 # C# .NET Winforms - Reverse TicTacToe Game
 ### By Omer Gery & Daniel Dolev.
+
 The Game is implemented by an Object-Oriented Win Form Application in the .NET Framework.
 
+The Logic ("backend") is implemented in the Logic Project, which produces a dll.
+
+The UI ("frontend) is implemented in the UI Project , it references the logic dll and produces an exe file.
 
 There are 2 forms - game settings implemented with the .NET Designer.
 
@@ -16,5 +20,6 @@ The other is the Game itself - a dynamic form - therefore it's implemented manua
 3.Click on "PlayGame!.exe".
 
 4.Enjoy!
+
 
 
