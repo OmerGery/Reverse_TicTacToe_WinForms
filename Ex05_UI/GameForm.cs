@@ -40,6 +40,7 @@ namespace Ex05_UI
                 for (int j = 0; j < r_Game.GameBoard.BoardSize; j++)
                 {
                     m_ButtonsMatrix[i, j] = new BoardButton(i, j);
+                    m_ButtonsMatrix[i, j].TabStop = false;
                     m_ButtonsMatrix[i, j].Text = string.Empty;
                     m_ButtonsMatrix[i, j].Location = new Point(currentXPlace, currentYPlace);
                     m_ButtonsMatrix[i, j].Size = new Size(50, 40);
