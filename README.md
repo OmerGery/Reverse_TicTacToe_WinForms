@@ -21,5 +21,6 @@ The other is the Game itself - a dynamic form - therefore it's implemented manua
 
 4.Enjoy!
 
+For any issues or bugs you may contact : omergery1996@gmail.com
 
 
