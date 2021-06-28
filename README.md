@@ -3,6 +3,8 @@
 
 The Game is implemented by an Object-Oriented Win Form Application in the .NET Framework.
 
+The user can play either against a friend or against the computer - an AI algorithm.
+
 The Logic ("backend") is implemented in the Logic Project, which produces a dll.
 
 The UI ("frontend) is implemented in the UI Project , it references the logic dll and produces an exe file.
